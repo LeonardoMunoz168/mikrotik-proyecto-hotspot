@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>BarNet - Sesión Cerrada</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	
+	<script src="JS/jquery.min.js"></script>
+	<script src="JS/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="CSS/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+
+	<script type="text/javascript">
+	    function openLogin() {
+			if (window.name != 'hotspot_logout') return true;
+			open('$(link-login)', '_blank', '');
+			window.close();
+			return false;
+	    }
+	</script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card">
+				
+				<div class="card-header text-center">
+					<img src="img/logo.png" alt="BarNet" class="responsive-img logo-img">
+					<h3>SESIÓN FINALIZADA</h3>
+				</div>
+
+				<div class="card-body">
+
+					<div class="notice-banner">
+						HAS CERRADO SESIÓN CORRECTAMENTE
+					</div>
+
+					<div class="table-planes mb-3">
+						<table class="table table-hover table-sm">
+							<thead>
+								<tr>
+									<th colspan="2" class="text-center">Resumen de tu conexión</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="right"><b>Usuario:</b></td>
+									<td align="left">$(username)</td>
+								</tr>
+								<tr>
+									<td align="right"><b>Dirección IP:</b></td>
+									<td align="left">$(ip)</td>
+								</tr>
+								<tr>
+									<td align="right"><b>Tiempo conectado:</b></td>
+									<td align="left">$(uptime)</td>
+								</tr>
+								$(if session-time-left)
+								<tr>
+									<td align="right"><b>Tiempo restante:</b></td>
+									<td align="left">$(session-time-left)</td>
+								</tr>
+								$(endif)
+								<tr>
+									<td align="right"><b>Subida / Bajada:</b></td>
+									<td align="left">$(bytes-in-nice) / $(bytes-out-nice)</td>
+								</tr>
+								$(if remain-bytes-total)
+								<tr>
+									<td align="right" style="color: #FFC312;"><b>Megas Restantes:</b></td>
+									<td align="left" style="color: #FFC312; font-weight: bold;">$(remain-bytes-total-nice)</td>
+								</tr>
+								$(endif)
+							</tbody>
+						</table>
+					</div>
+
+					<form action="$(link-login)" name="login" onSubmit="return openLogin()">
+						<input type="submit" value="Volver a Iniciar Sesión" class="btn login_btn">
+					</form>
+
+					<div class="footer-brand">BarNet Soluciones Digitales</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

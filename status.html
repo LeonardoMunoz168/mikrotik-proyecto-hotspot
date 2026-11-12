@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+
+	<title>BarNet - Estado de Conexión</title>
+	$(if refresh-timeout)
+	<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+	$(endif)
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="expires" content="-1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	
+	<script src="JS/jquery.min.js"></script>
+	<script src="JS/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="CSS/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+
+	<script type="text/javascript">
+	$(if advert-pending == 'yes')
+	    var popup = '';
+	    function focusAdvert() {
+			if (window.focus) popup.focus();
+	    }
+	    function openAdvert() {
+			popup = open('$(link-advert)', 'hotspot_advert', '');
+			setTimeout("focusAdvert()", 1000);
+	    }
+	$(endif)
+	    function openLogout() {
+			if (window.name != 'hotspot_status') return true;
+	        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+			window.close();
+			return false;
+	    }
+	</script>
+</head>
+<body $(if advert-pending == 'yes') onLoad="openAdvert()" $(endif)>
+
+	<div class="container">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card">
+				
+				<div class="card-header text-center">
+					<img src="img/logo.png" alt="BarNet" class="responsive-img logo-img">
+					<h3>CONECTADO</h3>
+				</div>
+
+				<div class="card-body">
+
+					$(if advert-pending == 'yes')
+					<div class="notice-banner" style="background-color: #dc3545; color: #fff;">
+						TIENES UN AVISO IMPORTANTE DE TU CUENTA.<br>
+						<a href="$(link-advert)" target="hotspot_advert" style="color: #FFC312; text-decoration: underline;">Toca aquí para verlo y continuar navegando</a>
+					</div>
+					$(endif)
+
+					<div class="table-planes mb-3">
+						<table class="table table-hover table-sm">
+							<thead>
+								<tr>
+									<th colspan="2" class="text-center">
+										$(if login-by == 'trial')
+											Bienvenido Invitado
+										$(elif login-by != 'mac')
+											Usuario: $(username)
+										$(endif)
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td align="right"><b>Dirección IP:</b></td>
+									<td align="left">$(ip)</td>
+								</tr>
+								<tr>
+									<td align="right"><b>Subida / Bajada:</b></td>
+									<td align="left">$(bytes-in-nice) / $(bytes-out-nice)</td>
+								</tr>
+								$(if remain-bytes-total)
+								<tr>
+									<td align="right" style="color: #FFC312;"><b>Megas Restantes:</b></td>
+									<td align="left" style="color: #FFC312; font-weight: bold;">$(remain-bytes-total-nice)</td>
+								</tr>
+								$(endif)
+								<tr>
+									<td align="right"><b>Tiempo activo:</b></td>
+									<td align="left">$(uptime)</td>
+								</tr>
+								$(if session-time-left)
+								<tr>
+									<td align="right"><b>Tiempo restante:</b></td>
+									<td align="left">$(session-time-left)</td>
+								</tr>
+								$(endif)
+								$(if blocked == 'yes')
+								<tr>
+									<td align="right"><b>Estado:</b></td>
+									<td align="left">
+										<a href="$(link-advert)" target="hotspot_advert" style="color: #ff6b6b; font-weight: bold;">Ver aviso pendiente</a>
+									</td>
+								</tr>
+								$(elif refresh-timeout)
+								<tr>
+									<td align="right"><b>Actualización:</b></td>
+									<td align="left">$(refresh-timeout)</td>
+								</tr>
+								$(endif)
+							</tbody>
+						</table>
+					</div>
+
+					<!-- Botón para Cerrar Sesión y liberar el dispositivo -->
+					$(if login-by-mac != 'yes')
+					<form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+						<input type="hidden" name="erase-cookie" value="on">
+						<input type="submit" value="Cerrar Sesión" class="btn login_btn">
+					</form>
+					$(endif)
+
+					<div class="info-nota">
+						Para consultar tus megas disponibles en cualquier momento, entra en tu navegador a: <b style="color: #FFC312;">barnet.com</b>
+					</div>
+
+					<div class="footer-brand">BarNet Soluciones Digitales</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

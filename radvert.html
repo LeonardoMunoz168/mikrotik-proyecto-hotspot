@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>BarNet - Aviso de Pago</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        h3 {
+            color: #ff4d4d;
+            margin-bottom: 20px;
+        }
+        .user-box {
+            background: #ff4d4d;
+            color: #ffffff;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #dddddd;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #ffc107;
+            color: #000000;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 25px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            background-color: #e0a800;
+        }
+        .footer {
+            margin-top: 35px;
+            font-size: 0.8rem;
+            color: #aaaaaa;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>AVISO DE PAGO</h3>
+        
+        <div class="user-box">
+            ESTIMADO CLIENTE: $(username)
+        </div>
+        
+        <p>
+            Tu plan se encuentra pendiente de pago. Acércate a nuestro punto de venta o envía tu comprobante para reactivar tu velocidad al 100%.
+        </p>
+
+        <a href="$(link-login-only)?dst=http://www.google.com&username=$(username)" class="btn">Entendido, continuar navegando</a>
+
+        <div class="footer">
+            BarNet Soluciones Digitales<br>
+            SOPORTE Y PAGOS: BARNET@GMAIL.COM
+        </div>
+    </div>
+
+</body>
+</html>

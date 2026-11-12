@@ -1,0 +1,18 @@
+# Mensajes de error personalizados para BarNet
+
+internal-error = Error interno del sistema ($(error-orig)). Intenta de nuevo.
+config-error = Error de configuración ($(error-orig)).
+not-logged-in = No has iniciado sesión (IP: $(ip)).
+ippool-empty = Red llena temporalmente: no hay direcciones IP disponibles. Intenta en unos minutos.
+shutting-down = El servicio BarNet se está reiniciando. Intenta en un momento.
+user-session-limit = Límite alcanzado: No se permiten más sesiones simultáneas para $(username).
+license-session-limit = Límite de sesiones alcanzado ($(error-orig)).
+wrong-mac-username = Usuario inválido ($(username)): esta dirección MAC no corresponde a tu equipo.
+chap-missing = Tu navegador no envió la respuesta de seguridad. Actualiza la página e intenta de nuevo.
+invalid-username = Usuario o contraseña incorrectos. Verifica tus datos o adquiere una ficha en nuestro punto de venta.
+invalid-mac = Esta cuenta está vinculada a otro dispositivo y no puede usarse en este equipo.
+uptime-limit = Estimado $(username), el tiempo de tu plan se ha agotado. Acércate a renovar tu ficha.
+traffic-limit = Estimado $(username), has consumido todos los Gigas (MB) de tu plan. Renueva tu ficha para seguir navegando.
+radius-timeout = El servidor de autenticación no responde. Intenta en unos segundos.
+auth-in-progress = Ya se está procesando tu ingreso, espera unos segundos e intenta de nuevo.
+radius-reply = $(error-orig)
